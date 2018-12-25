@@ -1,0 +1,113 @@
+<br>
+<button type="button" class="btn btn-primary" style="margin-left: 3%;">My Today's History</button>
+<br><br>
+<table mat-table [dataSource]="dataSource1" class="mat-elevation-z8 table table-hover">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+       
+      </th>
+      <td mat-cell *matCellDef="let row">
+        
+      </td>
+    </ng-container>
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> # Search ID. </th>
+      <td mat-cell *matCellDef="let element"> {{element.searchId}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Movie Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.movieId}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <td mat-cell *matCellDef="let element"> {{element.searchTime}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element">
+          <button type="button" class="btn btn-danger" (click)="clearOneHistory(element)">
+              Clear Me!!
+            </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+  </table>
+  <br>
+  <br>
+  <button type="button" class="btn btn-danger">Delete Selected</button><br><br>
+  <br>
+<button type="button" class="btn btn-primary" style="margin-left: 3%;">Other Search History</button>
+<br><br>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table table-hover">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> # Search ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.searchId}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Movie Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.movieId}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Search Time </th>
+      <td mat-cell *matCellDef="let element"> {{element.searchTime}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element"> 
+      <button type="button" class="btn btn-danger" (click)="clearOneHistory(element)">
+        Clear Me!!
+      </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <br>
+  <br>
+  <button type="button" class="btn btn-danger" (click)="clearSelectedHistory()">
+      Clear Selected!!
+    </button>
+  <br><br>
+  <br>

@@ -1,0 +1,30 @@
+<app-home-navbar>
+</app-home-navbar>
+
+  <br><br><br><br><br>
+  
+      <div class="container"> 
+        <div class="row">
+            <div class="col-md-3" *ngFor="let f of fav">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>{{f.movieName}}</mat-card-title>
+                      <mat-card-subtitle>Movie</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="https://www.fandangofanshop.com/media/wysiwyg/BlackPanther_payoff-square.jpg" 
+                    height="70%"   alt="Movie Poster">
+                    <mat-card-content>
+                      <p>
+                     {{f.movieDescription}}
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button (click) ="deleteFav(f)" >Delete</button>
+                    </mat-card-actions>
+                  </mat-card>
+        </div>
+        </div>
+  </div>
+<app-home-footer>
+</app-home-footer>

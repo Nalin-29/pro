@@ -1,0 +1,137 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="signup-form-container">
+    <div class="form-container">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="false" class="form">
+        <h4 class="form-header">Sign up
+          <i class="fa fa-sign-in" aria-hidden="true"></i>
+        
+        </h4>
+        <div *ngIf="tempdata.userId">
+            <h4>
+                  Account Created Successfully - Your Login ID is : {{tempdata.userId}}
+            </h4>
+              
+      </div>
+        <div class="control">
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <div *ngIf="f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.firstName.errors.required">First Name is required</div>
+            </div>
+        </div>
+        <div  class="control">
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+            <div *ngIf="f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.lastName.errors.required">Last Name is required</div>
+            </div>
+        </div>
+        <div class="control">
+          <label>Date of birth</label>
+          <input type="date" formControlName = "dob" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+          <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+              <div *ngIf="f.dob.errors.required">Date of birth required</div>
+          </div>
+        </div>
+        <div>
+          <label>Gender</label>
+          <br><br>
+          <label class="radio-inline">
+              Male <input type="radio"  name="gender"  (click) = "updateGender(1)" value = "male">
+            </label> 
+            <label class="radio-inline">
+              Female <input type="radio" name="gender" (click) = "updateGender(2)" value="female" >
+            </label>
+            <label class="radio-inline">
+              Other <input type="radio"  name="gender" (click) = "updateGender(3)" value="other"  >
+            </label>
+            <div *ngIf="!isGender()" class="invalid-feedback">
+              Field Required.
+            </div>
+        </div>
+        <br><br>
+        <div class="control">
+          <label>PinCode</label>
+           <input type="text" formControlName = "pincode" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }" />
+           <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+              <div *ngIf="f.pincode.errors.required">Pincode required</div>
+              <div *ngIf="f.pincode.errors.minlength">Enter 6 digit pincode only.</div>
+          </div>
+        </div>
+        <div class="control">
+            <label>Mobile No</label>
+            <input type="text" formControlName="mobile" class="form-control" 
+            [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">Mobile Number Required</div>
+                <div *ngIf="f.mobile.errors.pattern">Invalid Mobile Number</div>
+            </div>
+        </div>
+        <div class="control">
+            <label>Email</label>
+            <input type="text" formControlName="email" class="form-control" 
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                <div *ngIf="f.email.errors.pattern">Email must be valid</div>
+            </div>
+        </div>
+        <div class="control">
+            <label>Password</label>
+            <input type="password" formControlName="password" class="form-control" 
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                <div *ngIf="f.password.errors.pattern">Password must be valid</div>
+            </div>
+        </div>
+        <div class="control form-group">
+          <label>Choose Your Security Question</label>
+          <br>
+            <select name="questions" formControlName="question" 
+            style="width:100%;border-radius:4px;border:2px solid #AAAAAA; color: black;">
+                <option value="book">What is the name of your favourite Book ?</option>
+                <option value="teacher">What is the name of your favourite Teacher ?</option>
+                <option value="company">Which company is dream company ?</option>
+                <option value="sport">Who is your favourite sports player ?</option>
+                <option value="place">Which place is favourite place ? </option>
+            </select>
+        </div>
+        <div class="control">
+          <label>Your Answer</label>
+          <input type="text" formControlName="answer" class="form-control" 
+           [ngClass]="{ 'is-invalid': submitted && f.answer.errors }" />
+          <div *ngIf="submitted && f.answer.errors" class="invalid-feedback">
+              <div *ngIf="f.answer.errors.required">Answer is required</div>
+              <div *ngIf="f.answer.errors.minlength">Answer must be there</div>
+          </div>
+  
+        </div>
+        <div class="control">
+          <div *ngIf="isValidForm()">
+              <button  class="btn btn-primary" (click)="register()">Sign Up</button>
+          </div>
+          <div *ngIf="!isValidForm()">
+              <button disabled class="btn btn-primary" >Sign Up</button>
+          </div>
+          <p class="alter-way">
+            <a [routerLink]="'/login'">Already have an account?</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</body>  
+  
+  

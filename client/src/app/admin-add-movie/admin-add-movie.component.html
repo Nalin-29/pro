@@ -1,0 +1,90 @@
+<form  [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
+    <table class="example-full-width" cellspacing="0" id="tableId">
+        <tr>
+          <td>
+        <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="Movie Name" formControlName="movieName">
+  </mat-form-field>
+  </td>
+  </tr>
+  <tr>
+    <td>
+  <mat-form-field class="example-full-width">
+     <input type="text" matInput placeholder="Movie Poster Url" formControlName="posterUrl">
+      </mat-form-field>
+      </td>
+      </tr>
+      <tr>
+          <td>
+      <mat-form-field class="example-full-width"> Movie Release Date
+      <input matInput type="date" placeholder="Movie Release Date" formControlName="releaseDate">
+        </mat-form-field>
+        </td>
+        </tr>
+
+        <tr>
+            <td>
+    <mat-form-field class="example-full-width">
+        
+      <input type="text" matInput placeholder="Movie Description" formControlName="description">
+    </mat-form-field>
+    </td>
+    </tr>
+
+    <tr>
+        <td>
+    <mat-form-field class="example-full-width">
+  
+      <input type="text" matInput placeholder="Movie Video Url" formControlName="videoUrl">
+    </mat-form-field>
+    </td>
+    </tr>
+<tr>
+  <td>
+      <div class="form-group">
+          <label for="sel1">Category</label>
+          <select class="form-control" formControlName="category" placeholder="Movie Category">
+            <option value="romance">Romance</option>
+            <option value="drama">Drama</option>
+            <option value="action">Action</option>
+            <option value="horror">Horror</option>
+            <option value="documentary">Documentary</option>
+            <option value="adult">Adult</option>
+          </select>
+        </div>
+  </td>
+</tr>
+
+    <tr>
+        <td>
+      <mat-form-field class="example-full-width"> 
+      <input type="number" matInput placeholder="Movie Age limit" formControlName="ageLimit">
+    </mat-form-field>
+    </td>
+    </tr>
+
+    <tr>
+        <td>
+            <div class="form-group">
+                <label for="sel1">Language</label>
+                <select class="form-control" formControlName="language" placeholder="Movie Category">
+                  <option value="hindi">Hindi</option>
+                  <option value="english">English</option>
+                  <option value="telugu">Telugu</option>
+                  <option value="punjabi">Punjabi</option>
+                  <option value="marathi">Marathi</option>
+                </select>
+              </div>
+        </td>
+      </tr>
+     
+      
+      </table>
+      <div id="bt" *ngIf="isValid()">
+          <button class="btn btn-primary" mat-raised-button type="button" (click)="saveData()">SAVE</button>
+      </div>
+      <div *ngIf="!isValid()">
+          <button class="btn btn-primary" mat-raised-button type="button" (click)="saveData()"
+          disabled>SAVE</button>
+      </div>
+    </form>

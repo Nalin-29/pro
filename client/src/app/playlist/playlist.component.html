@@ -1,0 +1,62 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Add Playlist</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> New Playlist</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="playlist-name" class="col-form-label">PlayList Name:</label>
+              <input type="text" class="form-control" id="playlistName" name="playlist-name" [(ngModel)]="playListName">
+            </div>
+           
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addPlayList()" >Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<br><br><br><br>
+<div class="col-lg-8">
+    <div class="tab-content" id="faq-tab-content">
+        <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
+            <div class="accordion" id="accordion-tab-1">
+
+                <div class="card"  *ngFor="let list of playlist; let i = index">
+                    <div class="card-header" id='accordion-tab-1-heading-1-{{ i }}'>
+                        <h5>
+                            <button class="btn btn-link" type="button" data-toggle="collapse" 
+                            [attr.data-target]="'#accordion-tab-1-content-1-' + i" aria-expanded="true" 
+                            [attr.aria-controls]="'#accordion-tab-1-content-1-' + i" (click) ="getMovies(list,i)">
+                            {{list.playListName}}</button>
+                        </h5>
+                    </div>
+                    <div *ngIf="showMe">
+                        <div class="collapse show" id='accordion-tab-1-content-1-{{ i }}' 
+                        [attr.aria-labelledby]="'accordion-tab-1-heading-1-'+ i" data-parent="#accordion-tab-1">
+                        <div *ngIf="flag==i">
+                            <button class="btn btn-danger" (click)="deletePlayList(list)" >
+                                Delete Playlist
+                              </button>
+                            <div class="card-body">
+                                <app-play-item-list [movieList]="playmovie"></app-play-item-list>
+                            </div>
+                        </div>    
+                        </div>
+                    </div>
+                </div>
+              
+              </div>
+          </div>
+      </div>
+ </div>
+          

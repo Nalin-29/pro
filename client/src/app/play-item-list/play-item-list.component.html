@@ -1,0 +1,22 @@
+
+<div *ngIf="isNotNull(movieList)">
+    <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Movie Name</th>
+            <th>Movie Description</th>
+            <th>Action</th>
+          
+          </tr>
+        </thead>
+        <tbody *ngFor="let playmovie of movieList">
+          <tr>
+            <td>{{playmovie.movieName}}</td>
+            <td>{{playmovie.movieDescription}}</td>
+            <td><button class="btn btn-danger" (click)="removePlayListItem(playmovie)" >Remove</button> </td>
+           
+          </tr>
+         
+        </tbody>
+      </table>
+</div>

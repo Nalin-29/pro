@@ -1,0 +1,217 @@
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn " style="margin-right: 28vh" (click)="closeNav()">&times;</a>
+    <a href="home#search"> 
+    <span style="font-size: 4vw;">
+        <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;</span><span>Search
+    </span>
+      </a>
+      <div id="search"> 
+          <span class="close">X</span>
+          
+          <form role="search" id="searchform" action="/search" method="get">
+            <input value="" name="q" type="search" [(ngModel)]="title"
+             placeholder="type to search"/>
+             <button id="btt" type="button" class="close" style="margin-right: 42vw; margin-top: 27%;color: blue;"
+              (click) = "searchMovie()">SEARCH
+              <i class="fas fa-search" style="color: blue;"></i>
+              </button>
+  
+          </form>
+        </div>
+      <a href="#"> 
+          <span style="font-size: 4vw;">
+              <i class="fas fa-address-book"></i>&nbsp;</span><span>Favourites
+          </span>
+            </a>
+            <a href="#"> 
+                <span style="font-size: 4vw;">
+                    <i class="fas fa-user"></i>&nbsp;</span><span>New Playlist
+                </span>
+                  </a>
+          <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
+                        
+  </div>
+  <span class="float-right" style="font-size:30px;cursor:pointer; margin-right: 2vh" (click)="openNav()">&#9776;</span>
+  
+<br>
+<br>
+
+    
+  
+ 
+  <div class="container-fluid">
+  
+    <div class="col-12">
+        <ngb-carousel>
+            <ng-template ngbSlide>
+                <img src="../assets/images/do.webp" alt="First slide">
+            </ng-template>
+  
+            <ng-template ngbSlide>
+                    <img src="../assets/images/ek.webp" alt="Second slide">
+            </ng-template>
+  
+             <ng-template ngbSlide>
+                        <img src="../assets/images/teen.webp" alt="Third slide">
+                     
+             </ng-template>  
+             
+             <ng-template ngbSlide>
+                    <img src="../assets/images/11.webp" alt="Fourth slide">
+                    
+         </ng-template>  
+        </ngb-carousel>
+    </div>
+
+    <div *ngIf="movie">
+        <h1>Search Result</h1>
+        <div class="row">
+            <div class="col-sm-3" *ngFor = "let m of movie">
+              <app-cards [resultMovie] ="m"></app-cards>
+              <br>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="loadMore"
+        >Show More Results</button>
+    </div>
+
+    <h1>Popular English TV Shows</h1>
+  
+    <div id=bcolor class="row">
+            <div class="col-sm-2">
+              <div id=color class="card">
+                    <img id="image" class="card-img-top" src="../assets/images/a.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title"><b>Arrow</b></h5>
+                 
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div id=color class="card">
+                    <img id="image" class="card-img-top" src="../assets/images/b.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title"><b>BBT</b></h5>
+                 
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+                    <div id=color class="card">
+                            <img id="image" class="card-img-top" src="../assets/images/bb.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>B Bad</b></h5>
+                       
+                      </div>
+                    </div>
+            </div>
+            <div class="col-sm-2">
+                    <div id=color class="card">
+                            
+                            <img id="image" class="card-img-top" src="../assets/images/h.jpg" alt="Card image cap">
+                      <div class="card-body">
+                            <h5 class="card-title"><b>HIMYM</b></h5>
+                           
+                        
+                      </div>
+                    </div>
+            </div>
+            <div class="col-sm-2">
+                    <div id=color class="card">
+                            <img id="image" class="card-img-top" src="../assets/images/s.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>Suits</b></h5>
+                       
+                      </div>
+                    </div>
+            </div>
+            <div class="col-sm-2">
+                    <div id=color class="card">
+                            <img id="image" class="card-img-top" src="../assets/images/f.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>Friend</b></h5>
+                       
+                      </div>
+                    </div>
+            </div>
+          </div>
+          <br>
+  
+         <h1>Popular Hindi Tv Shows</h1>
+  
+          <div id=bcolor class="row">
+                <div class="col-sm-2">
+                  <div id=color class="card">
+                        <img id="image" class="card-img-top" src="../assets/images/h1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title"><b>Swaragini</b></h5>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div id=color class="card">
+                        <img id="image" class="card-img-top" src="../assets/images/h2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title"><b>Kapil Show</b></h5>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                        <div id=color class="card">
+                                <img id="image" class="card-img-top" src="../assets/images/h3.jpg" alt="Card image cap">
+                          <div class="card-body">
+                            <h5 class="card-title"> <b>Mahakali</b></h5>
+                           
+                          </div>
+                        </div>
+                </div>
+                <div class="col-sm-2">
+                        <div id=color class="card">
+                                
+                                <img id="image" class="card-img-top" src="../assets/images/h4.jpg" alt="Card image cap">
+                          <div class="card-body">
+                                <h5 class="card-title"><b>Bigg boss</b></h5>
+                                
+                            
+                          </div>
+                        </div>
+                </div>
+                <div class="col-sm-2">
+                        <div id=color class="card">
+                                <img id="image" class="card-img-top" src="../assets/images/h5.jpg" alt="Card image cap">
+                          <div class="card-body">
+                            <h5 class="card-title"><b> Simar Ka</b></h5>
+                            
+                          </div>
+                        </div>
+                </div>
+  
+                
+                <div class="col-sm-2">
+                        <div id=color class="md-card">
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe src="https://www.youtube.com/embed/iHhcHTlGtRs" frameborder="0" ></iframe>
+                                <div class="mask flex-center">
+                                        
+                                    </div>
+                                    </div>
+                          <div class="card-body">
+                            <h5 class="card-title"><b>Balika Vadhu</b></h5>
+                            
+                          </div>
+                        </div>
+                </div>
+               
+                
+              </div>
+              <br><br>
+
+              <!-- Rotating card -->
+
+              <app-home-footer></app-home-footer>
+              <!-- <app-cards></app-cards> -->
+  
+  
+  

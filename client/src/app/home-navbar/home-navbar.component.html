@@ -1,0 +1,29 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn " style="margin-right: 28vh" (click)="closeNav()">&times;</a>
+  <a href="home#search"> 
+  <span style="font-size: 4vw;">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;</span><span>Search
+  </span>
+    </a>
+    <div id="search"> 
+        <span class="close">X</span>
+        <form role="search" id="searchform" action="/search" method="get">
+          <input value="" name="q" type="search" [(ngModel)]="title"
+          (keyup) = "searchMovie()"
+           placeholder="type to search"/>
+
+        </form>
+      </div>
+    <a href="/favourite"> 
+        <span style="font-size: 4vw;">
+            <i class="fas fa-address-book"></i>&nbsp;</span><span>Favourites
+        </span>
+          </a>
+          <a href="#"> 
+              <span style="font-size: 4vw;">
+                  <i class="fas fa-user"></i>&nbsp;</span><span>New Playlist
+              </span>
+    </a>
+                      
+</div>
+<span class="float-right" style="font-size:30px;cursor:pointer; margin-right: 2vh" (click)="openNav()">&#9776;</span>

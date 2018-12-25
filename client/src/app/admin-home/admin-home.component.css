@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+  }
+  .example-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .example-header-image {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0pBclFFl4MPadnZ8iTKKMUsLPcEhyROFsxMajv3P1SzK-ZgaA3Q');
+    background-size: cover;
+  }
+  

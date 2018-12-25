@@ -1,0 +1,54 @@
+
+    <br><br><br>
+    <button class="btn btn-warning"  (click)="exportAsXLSX()">
+      <i class="fa fa-file-excel-o" style="font-size:48px;color:blue">
+      </i>EXCEL</button> &nbsp;&nbsp;
+      <button class="btn btn-success" (click)="fn()">
+          <i class="far fa-file-pdf" style="font-size:48px;color:blue">
+          </i>PDF</button>
+    <br><br>
+<table mat-table [dataSource]="dataSource" 
+ class="mat-elevation-z8 table table-hover" id="contentToConvert">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    
+
+    <ng-container matColumnDef="movieId">
+      <th mat-header-cell *matHeaderCellDef> MovieId. </th>
+      <td class="align-middle" mat-cell *matCellDef="let element"> {{element.movieId}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="movieName">
+        <th mat-header-cell *matHeaderCellDef> Movie Name </th>
+        <td class="align-middle" mat-cell *matCellDef="let element"> {{element.movieName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef> User Name </th>
+          <td class="align-middle" mat-cell *matCellDef="let element"> {{element.userName}} </td>
+      </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef> User Gender </th>
+      <td   class="align-middle" mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> User Age</th>
+        <td   class="align-middle" mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+    </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="pincode">
+            <th mat-header-cell *matHeaderCellDef> Pincode </th>
+            <td   class="align-middle" mat-cell *matCellDef="let element"> {{element.pincode}} </td>
+          </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
